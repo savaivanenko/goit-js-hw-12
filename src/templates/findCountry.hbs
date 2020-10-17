@@ -1,0 +1,23 @@
+{{#each this}}
+  <h3>{{name}}</h3>
+    <ul>
+      <li>capital:{{capital}}</li>
+      <li>region:{{region}}</li>
+      <li>population:{{population}}</li>
+      <li>languages:
+        <ul>{{#each this.languages}}
+              <li>{{nativeName}}</li>
+            {{/each}}
+        </ul>
+      </li>
+      <li class="js-imagebox">
+            <img class="js-countries_flag" src="{{flag}}" width="300" height="150" alt="flag">
+      </li>
+      {{!-- <li>Граничит с: <ol>{{#each this.borders}}
+                            <li>{[borders]}</li>
+                          {{/each}}
+                      </ol> 
+      </li> --}}
+    </ul>
+  
+{{/each}} 
