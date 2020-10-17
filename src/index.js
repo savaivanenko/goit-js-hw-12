@@ -30,13 +30,13 @@ function debounceInputCallback() {
   fetch(url, options)
   .then(Response => Response.json())
   .then(data => {
-    if (!data.length) return alert({title:" I don't find it!"});
+    if (!data.length) return;
     if (data.length === 1){
       const markupOneCountry = findCountry(data)      
       refs.countryList.innerHTML = markupOneCountry;
     }
     else if (data.length > 10) return  error({
-      title: 'specify your request',
+      title: 'Уточните ваш запрос',
     });
     else if (data.length >1 && data.length <=10){
       let markupListCountry = countryTmp(data)
@@ -44,7 +44,7 @@ function debounceInputCallback() {
     }    
   })
   .catch(error({
-    title: 'Wrong query! Please try again',
+    title: 'Что-то пошло не так',
   }))
 }
 
