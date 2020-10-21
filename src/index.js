@@ -13,8 +13,14 @@ const refs = {
 
 const debounce = require('lodash.debounce');
 
-refs.searchForm.addEventListener('input', debounce(debounceInputCallback, 500));
+window.addEventListener("keydown", e =>{
+    if (e.key == "Enter"){
+      e.preventDefault();
+      e.stopPropagation();
+    }
+});
 
+refs.searchForm.addEventListener('input', debounce(debounceInputCallback, 500));
 function debounceInputCallback() {
   const inputCountry = refs.searchForm.value.trim();
   refs.countryList.innerHTML = '';
@@ -34,6 +40,7 @@ function debounceInputCallback() {
     if (data.length === 1){
       const markupOneCountry = findCountry(data)      
       refs.countryList.innerHTML = markupOneCountry;
+      alert ({title: 'Бинго!'})
     }
     else if (data.length > 10) return  error({
       title: 'Уточните ваш запрос',
